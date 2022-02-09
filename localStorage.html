@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<ul id="ingridients">
+    <li>ЗАгрузка..</li>
+</ul>
+
+<form action="" id="form1" method="post">
+    <input type="text" name="item">
+    <input type="submit">
+</form>
+
+
+<script>
+
+    let form = document.getElementById("form1")
+    let ingridients = document.getElementById("ingridients")
+    let item = form.querySelector('[name="item"]');
+    let elements = []
+
+    function checkStorage() {
+        elements.push(...JSON.parse((localStorage.getItem("elements"))))
+        displayItems(elements, ingridients)
+    }
+
+    form.addEventListener("submit", handleFormSubmit)
+
+
+    checkStorage()
+
+    function handleFormSubmit(e) {
+        e.preventDefault()
+        elements.push({text: e.target.item.value, check: false})
+        item.value = ''
+        displayItems(elements, ingridients)
+        localStorage.setItem("elements", JSON.stringify(elements))
+    }
+
+    function displayItems(elements, ingridients) {
+        let aaa = []
+        elements.map((el, i) => {
+            aaa.push(`<li>
+                        <input type="checkbox" id="item${i}" data-id="${i}" ${(el.check) ? "checked" : ""} >
+                        <label for="item${i}">${el.text}</label>
+                    </li>`)
+        })
+        return ingridients.innerHTML = aaa.join("")
+    }
+
+
+    ingridients.addEventListener("click", handleClickItem)
+
+    function handleClickItem(e) {
+       let id = e.target.getAttribute("data-id") // 8
+        elements[id].check = !elements[id].check
+        localStorage.setItem("elements", JSON.stringify(elements))
+    }
+
+</script>
+
+
+</body>
+</html>
