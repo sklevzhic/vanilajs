@@ -10,83 +10,73 @@
 <body>
 <div id="app"></div>
 <script>
+    let app = document.getElementById("app")
+    fetchTodos()
 
-
-const user = {
-    name: "Alexander",
-    age: "27",
-    say: () => console.log("hello")
-}
-
-console.log(user)   // {name: 'Alexander', age: '27', say: ƒ}
-console.log(user.prototype)   // undefined
-
-function User(name, age) {
-    this.name = name;
-    this.age = age
-}
-
-User.prototype.say = function () {
-    console.log(`hello ${this.name}`)
-}
-
-let alexander = new User("Alexander", 27)
-
-
-console.log(alexander.__proto__)
-
-
-
-
-fetchTodos()
-
-let app = document.getElementById("app")
-
-async function fetchTodos() {
-    let response = await fetch('https://jsonplaceholder.typicode.com/todos?_page=1')
-    let responseJSON = await response.json()
-    let todos = generateTodoItems(responseJSON)
-
-    let todosHTML = renderTodoItems(todos)
-
-}
-
-
-class Todo {
-    constructor({id, title, userId}) {
-        this.id = id
-        this.title = title
-        this.userId = userId
+    async function fetchTodos() {
+        let response = await fetch('https://jsonplaceholder.typicode.com/todos?_page=1')
+        let responseJSON = await response.json()
+        let todos = generateTodoItems(responseJSON)
+        renderTodoItems(todos)
     }
-    renderTodo() {
+
+    class Todo {
+        constructor({id, title, userId}) {
+            this.id = id
+            this.title = title
+            this.userId = userId
+        }
+    }
+
+    Todo.prototype.renderTodo = function () {
         let wrapper = document.createElement("div")
         wrapper.innerText = this.title
         return wrapper
     }
-}
-function generateTodoItems(items) {
-    let result = []
-    items.map((el => {
-        result.push(new Todo(el))
-    }))
-    return result
-}
-function renderTodoItems(todos) {
 
-    todos.map(el => {
-        app.append(el.renderTodo())
-    })
+    function generateTodoItems(items) {
+        let result = []
+        items.map((el => {
+            result.push(new Todo(el))
+        }))
+        return result
+    }
 
+    function renderTodoItems(todos) {
+        todos.map(el => {
+            app.append(el.renderTodo())
+        })
+    }
 
-}
+    // __proto__
 
+    class Animal {
+        constructor(name, age) {
+            this.name = name;
+            this.age = age
+        }
+    }
 
+    class Rabbit extends Animal {
+        constructor(name, age, earLength) {
+            super(name, age);
+            this.earLength = earLength
+        }
+    }
 
+    class Ushastyi extends Rabbit {
+        constructor(name, age, earLength, jump) {
+            super(name, age, earLength)
+            this.jump = jump
+        }
+    }
 
-
-
-
-
+    let barsikAnimal = new Animal("barsik", 15)
+    let barsik = new Rabbit("barsik", 15, 25)
+    let barsik1 = new Ushastyi("nn", 15,18,true)
+    console.log(barsikAnimal.__proto__)
+    console.log(barsik.__proto__)
+    console.log(barsik1)
 
 </script>
 
