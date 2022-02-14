@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div id="app"></div>
+
+<script>
+    function sum() {
+        let sum = 0
+        Object.keys(arguments).map(el => {
+            sum += arguments[el]
+        })
+        return sum
+    }
+    function min() {
+        let min = arguments[0]
+
+        for (let i = 1; i < arguments.length; i++) {
+            if (arguments[i] < min) {
+                min = arguments[i]
+            }
+        }
+        return min
+    }
+    function max() {
+        let max = arguments[0]
+
+        for (let i = 1; i < arguments.length; i++) {
+            if (arguments[i] > max) {
+                max = arguments[i]
+            }
+        }
+        return max
+    }
+
+    console.log('sum => ',sum(1, 2, 3, 4, 5, 8, 6, 7))
+    console.log('min => ',min(1, 2, 3, -25, 5, 8, 6, 7))
+    console.log('max => ',max(1, 2, 3, -25, 5, 8, 6, 7))
+
+    let a = [1, 2, 3, 4, 5, 6, 7, 7, 8, 9]
+    let [,two,,four, ...numbers] = a
+
+</script>
+
+
+</body>
+</html>

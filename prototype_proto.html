@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div id="app"></div>
+<script>
+
+
+const user = {
+    name: "Alexander",
+    age: "27",
+    say: () => console.log("hello")
+}
+
+console.log(user)   // {name: 'Alexander', age: '27', say: ƒ}
+console.log(user.prototype)   // undefined
+
+function User(name, age) {
+    this.name = name;
+    this.age = age
+}
+
+User.prototype.say = function () {
+    console.log(`hello ${this.name}`)
+}
+
+let alexander = new User("Alexander", 27)
+
+
+console.log(alexander.__proto__)
+
+
+
+
+fetchTodos()
+
+let app = document.getElementById("app")
+
+async function fetchTodos() {
+    let response = await fetch('https://jsonplaceholder.typicode.com/todos?_page=1')
+    let responseJSON = await response.json()
+    let todos = generateTodoItems(responseJSON)
+
+    let todosHTML = renderTodoItems(todos)
+
+}
+
+
+class Todo {
+    constructor({id, title, userId}) {
+        this.id = id
+        this.title = title
+        this.userId = userId
+    }
+    renderTodo() {
+        let wrapper = document.createElement("div")
+        wrapper.innerText = this.title
+        return wrapper
+    }
+}
+function generateTodoItems(items) {
+    let result = []
+    items.map((el => {
+        result.push(new Todo(el))
+    }))
+    return result
+}
+function renderTodoItems(todos) {
+
+    todos.map(el => {
+        app.append(el.renderTodo())
+    })
+
+
+}
+
+
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>
