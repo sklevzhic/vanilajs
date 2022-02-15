@@ -41,14 +41,16 @@
         }))
         return result
     }
-
     function renderTodoItems(todos) {
         todos.map(el => {
             app.append(el.renderTodo())
         })
     }
 
-    // __proto__
+    // __proto__ vs prototype
+    // prototype - для добавления методов в объект, которые созданны на основе класса
+    // __proto__ - позволяет нам пользоваться методами, которые были объявленны в родительских оъектах созданных на основе класса
+
 
     class Animal {
         constructor(name, age) {
@@ -64,6 +66,10 @@
         }
     }
 
+    Rabbit.prototype.run = function () {
+        return `<h2>sdfds</h2>`
+    }
+
     class Ushastyi extends Rabbit {
         constructor(name, age, earLength, jump) {
             super(name, age, earLength)
@@ -71,12 +77,34 @@
         }
     }
 
-    let barsikAnimal = new Animal("barsik", 15)
-    let barsik = new Rabbit("barsik", 15, 25)
-    let barsik1 = new Ushastyi("nn", 15,18,true)
-    console.log(barsikAnimal.__proto__)
-    console.log(barsik.__proto__)
+    let barsik2 = new Animal("nn", 15)
+    let barsik1 = new Ushastyi("barsik1 Ushastyi", 15, 18, true)
     console.log(barsik1)
+
+
+    //
+    let barsik3 = {
+        name: 'barsik3',
+        age: 15,
+        earLength: 18,
+        jump: true,
+        say: () => {
+            return "hello"
+        }
+    }
+    Object.setPrototypeOf(barsik3, {
+        jumps: {
+            value: true
+        }
+    })
+
+    let barsik4 = Object.create(barsik3)
+    console.log(barsik3)
+    barsik4.age = 5
+    console.log(barsik4.jump)
+    console.log(Object.getPrototypeOf(barsik4))
+
+
 
 </script>
 

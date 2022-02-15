@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div id="teachers">
+    <div id="loading">Загрузка...</div>
+</div>
+<script>
+    let users = [
+        {
+            name: "Клевжиц Александр Юрьевич",
+            position: "инженер-программист",
+            id: "131"
+        },
+        {
+            name: "Клевжиц Александр Юрьъевич",
+            position: "инженер-программист",
+            id: "131"
+        },
+        {
+            name: "Клевжиц Александр Юрьъевич",
+            position: "инженер-программист",
+            id: "131"
+        },
+    ]
+
+    const teachers = document.getElementById("teachers")
+
+    class User {
+        constructor({name, position, id}) {
+            this.name = name
+            this.position = position
+            this.id = id
+        }
+
+        renderUser() {
+            const teacher = document.createElement("a")
+            teacher.setAttribute("href",`https://ipkip.bspu.by/teachers/${this.id}`);
+            teacher.classList.add("teacher_item")
+
+            const teacherImage = document.createElement("img")
+            teacherImage.classList.add("teacher_image")
+            teacherImage.setAttribute("src",`https://ipkip.bspu.by/teachers/${this.name}.jpg`);
+            teacher.append(teacherImage)
+
+            const teacherInfo = document.createElement("div")
+            teacherInfo.classList.add("teacher_info")
+            teacher.append(teacherInfo)
+
+            const teacherName = document.createElement("h5")
+            teacherName.classList.add("teacher_name")
+            teacherName.innerText = this.name
+            teacherInfo.append(teacherName)
+
+            const teacherPosition = document.createElement("p")
+            teacherPosition.classList.add("teacher_position")
+            teacherPosition.innerText = this.position
+            teacherInfo.append(teacherPosition)
+            return teacher
+        }
+    }
+    let usersObj = generateUsers(users)
+    renderTodoItems(usersObj)
+    function generateUsers(items) {
+        const arr = []
+        items.map(item => {
+            arr.push(new User(item))
+        })
+        return arr
+    }
+    function renderTodoItems(items) {
+        items.forEach(el => {
+            teachers.append(el.renderUser())
+        })
+        document.getElementById("loading").remove()
+    }
+
+
+</script>
+
+<style>
+    .teacher_item {
+        border: 1px solid black;
+    }
+</style>
+
+</body>
+</html>
