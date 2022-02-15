@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+
+<script>
+
+    let a = 1
+
+    console.log(name(a))  // a++ => 1 на ретерне возвращает старое значение
+    console.log("a1", a) // 2 стандарт
+    console.log(name1(a)) // ++a => 3 возвращает уже измененное значение
+    console.log("a2", a) // 3 стандарт
+
+    function name(num) {
+        return num++
+    }
+
+    function name1(num) {
+        return ++num  // 2 на ретерне возвращает уже новое значение
+    }
+
+
+    let a1 = "-12"
+    let b1 = "84"
+
+
+    // numbers
+    a1 = +a1 + +b1 // 150
+    b1 = +a1 - +b1  // 100
+    a1 = +a1 - +b1
+    console.log(a1, b1)
+
+    // string
+    let a3 = "145"
+    let b3= "11"
+
+
+    //   145     11
+    b3 = [a3 ,a3 = b3][0]
+    console.log(a3, b3)
+
+
+</script>
+
+
+</style>
+
+</body>
+</html>
