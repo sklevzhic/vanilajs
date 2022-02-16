@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div id="teachers">
+    <div id="loading">Загрузка...</div>
+</div>
+<script>
+
+    // Напишите однострочное решение, которое вычисляет сумму квадратных корней для всех чётных чисел целочисленного массива.
+    // [4,9,16,25] => [ 2,0,4,0]  => 6
+
+    let a = [4, 9, 16, 25].reduce((accumulator, currentValue) => accumulator + ((currentValue % 2) ? 0 : Math.sqrt(currentValue)), 0)
+    console.log(a)
+
+
+    // Что выведет на экран следующий код?
+    function b(x, y, a) {
+        arguments[1] = 10;
+        console.log(y);
+    }
+
+    b(1, 2, 3);  //10
+    let str = "Привет МИр"
+
+
+
+    // Надо написать парсер уникальных символов из предложения. Например:
+    let answer1 = Array.from(new Set(str.replace(" ", "").toLowerCase().split(""))).join(", ")
+    console.log(answer1)
+
+    function uniqueLetters(str) {
+        let result = []
+        str = str.replace(" ", "").toLowerCase()
+        for (let i = 0; i < str.length; i++) {
+            if (!result.includes(str[i])) {
+                result.push(str[i])
+            }
+        }
+        return result.join(", ")
+    }
+
+    console.log(uniqueLetters(str))
+
+
+
+
+    let arr = (elem) => (elem, 1,2,3,20)
+
+    let result = arr(2)
+    debugger
+    console.log(result)
+
+</script>
+
+</body>
+</html>

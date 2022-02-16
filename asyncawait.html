@@ -12,52 +12,15 @@
     <div id="loading">Загрузка...</div>
 </div>
 <script>
-    // a1,a4,a3, a2
 
-    console.log("a1")
-    name1()
-    console.log("a4")
-    setTimeout(name, 2000)
+    let sleep = function (ms) {
+        return new Promise(function (resolve) {
+            return setTimeout(() => resolve(), ms);
+        });
+    };
 
-
-
-
-
-
-
-
-    async function name1() {
-        await new Promise(resolve => {
-            setTimeout(() => console.log("a2"), 3000)
-        })
-    }
-    function name() {
-        console.log("a3")
-    }
-
-
-    console.log('------------------')
-
-    async function name11() {
-        console.log("after resolve1")
-        await new Promise(resolve => console.log("resolve"))
-        return 10
-    }
-
-    console.log(name11())
-    console.log('------------------')
-
-    async function wait() {
-        await new Promise(resolve => setTimeout(resolve, 1000));
-
-        return 10;
-    }
-    function f() {
-        // ...что здесь написать?
-        // чтобы вызвать wait() и дождаться результата "10" от async–функции
-        // не забывайте, здесь нельзя использовать "await"
-    }
-
+    sleep(2000).then(console.log('1d'));
+    sleep(2000).then(() => console.log('5'));
 
 
 </script>
