@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div id="teachers">
+    <div id="loading">Загрузка...</div>
+</div>
+<script>
+
+    // факториал
+
+    function fact(num) {
+        if (num == 0) return 1
+        return num * fact(num - 1)
+    }
+
+    console.log(fact(5))
+
+
+
+
+    let str = ''
+    for (let i = 1; i <= 30; i++) {
+        str += i + " "
+    }
+
+    let a1 = 0
+    let str1 = ""
+
+    function f1() {
+        if (a1 === 30) return
+        str1 += a1
+        a1++
+        f1()
+    }
+
+    f1()
+
+    console.log(str)
+
+
+
+    let arr1 = [[1, [2, [3]]], [4, 5], [6, 7, 8], 9]
+    let result = []
+
+    // Рекурсия
+    function decompressArrReq(inputArr) {
+        inputArr.forEach(el => {
+            if (Array.isArray(el)) {
+                return decompressArrReq(el)
+            } else {
+                result.push(el)
+            }
+        })
+        return result
+
+    }
+
+    function decompressArrStr(inputArr) {
+        return inputArr.toString().split(",").map(el => +el)
+
+    }
+
+    function decompressArrFlat(inputArr) {
+        return inputArr.flat(Infinity)
+    }
+
+    console.log(decompressArrFlat(arr1))
+
+
+
+    function sumSecondAndFourth(arr) {
+        let [, two, , four] = arr
+        return two + four
+    }
+    console.log(sumSecondAndFourth([0, 1, 0, 2, 0, 0, 0, 0, 0]))
+
+
+    function getAllAfterThree(arr) {
+        return arr.filter((el, i) => i >= 2 )
+    }
+
+    function getAllAfterThree1(arr) {
+        let [,,...rest] = arr
+        return rest
+    }
+
+    console.log(getAllAfterThree([1, 2, 3, 4, 5, 6, 7, 8, 9]))
+    console.log(getAllAfterThree1([1, 2, 3, 4, 5, 6, 7, 8, 9]))
+
+
+
+
+</script>
+
+</body>
+</html>
