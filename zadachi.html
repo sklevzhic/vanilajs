@@ -30,7 +30,6 @@
     let str = "Привет МИр"
 
 
-
     // Надо написать парсер уникальных символов из предложения. Например:
     let answer1 = Array.from(new Set(str.replace(" ", "").toLowerCase().split(""))).join(", ")
     console.log(answer1)
@@ -48,10 +47,30 @@
 
     console.log(uniqueLetters(str))
 
-    let arr = (elem) => (elem, 1,2,3,20)
+    let arr = (elem) => (elem, 1, 2, 3, 20)
 
     let result = arr(2)
     console.log(result)
+
+
+    console.log("----------------")
+
+    let arr112 = ["test21", "test12", "test13", "test14", "test15", "test16"]
+
+
+    function nnn(arrr) {
+        let res = ""
+        let firstWord = arrr[0]
+        for (let i=0; i <= firstWord.length; i++) {
+            if (arrr.every(el => el.includes(firstWord[i]))) {
+                res = 2
+            } else {
+                return res
+            }
+        }
+    }
+
+    console.log(nnn(arr112))
 
 </script>
 

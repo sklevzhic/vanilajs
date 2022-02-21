@@ -1,0 +1,100 @@
+<script>   $('head').append('<link rel="stylesheet" href="./admin-panel/vendor/kcfinder/upload/files/css/style.css">');
+$('li a').each(function (index, value) {
+    if ($(value).attr('href').indexOf('script.google.com/macros/s/AKfycby52h9E4pnCXnVkUi') != -1) {
+        $(value).attr('href', $(value).attr('href').slice('1'));
+    }
+}); </script>
+<style>   #mainmenu {
+    font-size: 12px;
+}
+
+#top-menu {
+    top: 70px;
+}
+
+ul.lang_btn {
+    position: absolute;
+    right: 0;
+    top: -55px;
+    display: flex;
+}
+
+ul.lang_btn li {
+    margin-left: 26px;
+    font-size: 17px;
+    list-style: none;
+    margin: 0;
+    padding: 5px;
+}
+
+ul.lang_btn li:first-child {
+    border-left: none;
+}
+
+.online, .offline {
+    position: relative;
+    background: none !important;
+}
+
+.online span, .offline span {
+    display: none;
+    padding: 2px 3px;
+    margin-left: 8px;
+    width: 130px;
+}
+
+.online:hover span, .offline:hover span {
+    content: "";
+    width: 355px;
+    right: 24px;
+    display: inline;
+    position: absolute;
+    background: #ffffff;
+    border: 1px solid #cccccc;
+    color: #6c6c6c;
+    z-index: 1;
+    opacity: 0.9;
+}
+
+.tooltip_online::after {
+    content: "(*с возможностью онлайн-обучения в режиме реального времени согласно расписанию занятий)";
+}
+
+.tooltip_offline::after {
+    content: "Занятия проходят в оффлайн формате";
+}
+
+</style>
+<ul class="lang_btn">
+    <li><a href="/internship-of-specialists-in-education"><img
+            src="/admin-panel/vendor/kcfinder/upload/images/icons/lang_eng.png" alt="" width="30"></a></li>
+    <li><a href="/internship-of-specialists-in-education-ch"><img
+            src="/admin-panel/vendor/kcfinder/upload/images/icons/lang_ch.png" alt="" width="30"></a></li>
+</ul>
+
+<a href="/normativno-metodicheskaya---dokumentaciya" target="_blank">
+    <span class="glyphicon glyphicon-folder-open"></span>Нормативно-методическая документация
+</a>
+<a href="https://elib.bspu.by/handle/doc/569" target="_blank">
+    <span class="glyphicon glyphicon-book"></span>Репозиторий
+</a>
+<a href="https://nastaunik.bspu.by/" target="_blank">
+    <span class="glyphicon glyphicon-list-alt"></span>Газета «НАСТАЎНІК»
+</a>
+<a href="/oprosy" target="_blank">
+    <span class="glyphicon glyphicon-check"></span>СМК
+</a>
+<a href="/contacts">
+    <span class="glyphicon glyphicon-phone-alt"></span>Контакты
+</a>
+
+
+<script>   var __REPLAIN_ = '1a0eec1c-a0b4-4f23-bec2-950516a353ee';
+(function (u) {
+    var s = document.createElement('script');
+    s.type = 'text/javascript';
+    s.async = true;
+    s.src = u;
+    var x = document.getElementsByTagName('script')[0];
+    x.parentNode.insertBefore(s, x);
+})('https://widget.replain.cc/dist/client.js'); </script>
