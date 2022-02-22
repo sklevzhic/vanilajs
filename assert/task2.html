@@ -316,19 +316,53 @@
         return count
 
     }
+
     console.log(countZero(2014))
 
     console.log("===========================")
     console.log("function subStringFinder(str, subStr){")
 
-    function subStringFinder(str, subStr){
+    function subStringFinder(str, subStr) {
         return str.indexOf(subStr)
     }
+
     console.log(subStringFinder('abbcdabbbbbck', 'ab'))
     console.log(subStringFinder('abbcdabbbbbck', 'bck'))
     console.log(subStringFinder('abbcdabbbbbck', 'bbbck'))
 
 
+    // Interview Question:
+    // How would you return and array of characters and numbers that would output a formatted array .
+
+    function test1() {
+        let regex = new RegExp(/[0-9],[0-9]/g)
+        const arr = ['1', '0', '0', 'a', 'b', 'c']
+            .toString()
+
+        for (let i = 0; i <= arr.length; i++) {
+            let substr = ""
+
+        }
+        console.log()
+
+        // if (regex.test(el)) {
+        //     return +el
+        // } else {
+        //     return el
+        // }
+        // let newArr = arr.map(el => {
+        //
+        // })
+        // let res = []
+        // for (let i = 0; i < newArr.length; i++) {
+        //
+        // }
+
+
+        return arr
+    }
+
+    console.log(test1())
 </script>
 
 </body>
