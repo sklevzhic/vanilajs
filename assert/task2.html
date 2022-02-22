@@ -13,12 +13,320 @@
 </div>
 <script>
 
-    const objPart1 = {
-        prop1: 1,
-        prop2: 2,
-    };
+    function fib(n) {
+        let arr = [0, 1]
+        for (let i = 2; i <= n; i++) {
+            arr.push(arr[i - 1] + arr[i - 2])
+        }
+        return arr.pop()
+
+    }
+
+    console.log(fib(0))
 
 
+    // 1. Best way to Create Array
+
+    let arr1 = ["11", 22, 33, "222"]
+    let arr2 = new Array("11", 22, 33)
+    let arr3 = new Array(3)
+    let arr4 = new Array()
+
+    console.log(arr1)
+    console.log(arr2)
+    console.log(arr3)
+    console.log(arr4)
+    console.log(arr4)
+    let lastValue = arr1[arr1.length - 1] // 22
+    console.log(lastValue) // 222
+    console.log(arr1.shift()) // 11
+    arr1.push({a: "vv"})
+
+
+    let obj122 = {a: "vv"}
+    let obj1 = new Object()
+
+    let obj2 = Object.create({}, obj1)
+    let strObj = JSON.stringify(obj122)
+    let obj222 = JSON.parse(strObj)
+    console.log(obj222)
+
+    console.log(arr1) // [22, 33, '222', {…}]
+    console.log(arr1.slice(1, 2)) // 11
+    console.log(arr1.splice(1, 2)) // 11
+    console.log([] == []) // true
+
+
+    const newFunct = () => console.log("hello")
+
+    //
+    // console.log(ggg3)
+    // console.log(ggg1)
+
+    function name() {
+        if (true) {
+            let ggg1 = 1
+            var ggg2 = 1
+            const ggg3 = 1
+        }
+
+        return (1)
+
+    }
+
+    name()
+
+
+    // console.log(ggg3)
+    // console.log(ggg1)
+    // console.log(ggg2)
+
+
+    // простое ли число
+
+
+    const isPrime = (n) => {
+
+        for (let i = 2; i < n; i++) {
+            if (n % i === 0) {
+                return false
+            }
+        }
+        return true
+    }
+
+    console.log("------") // false
+    console.log(isPrime(198)) // false
+
+
+    function primeFactors(n) {
+        // let res = []
+        // let i = 2
+        // while ()
+        // return res
+    }
+
+    console.log(primeFactors(69)) // [3, 23]
+
+    console.log("fibonacci")
+
+    function fibonacci(n) {
+        let res = [0, 1]
+        for (let i = 0; i < n - 1; i++) {
+            res.push(res[i] + res[i + 1])
+        }
+
+        return res
+    }
+
+    console.log(fibonacci(12).pop()) //144
+
+
+    console.log("greatestCommonDivisor")
+
+    function greatestCommonDivisor(a, b) {
+        for (let i = a - 1; i >= 1; i--) {
+
+
+            if ((a % i === 0) && (b % i === 0)) {
+                return i
+            }
+        }
+        return false
+
+    }
+
+    console.log(greatestCommonDivisor(48, 18)) // 6
+    console.log(greatestCommonDivisor(69, 169)) // 1
+    console.log(greatestCommonDivisor(48, 18)) // 6
+
+
+    console.log("remove Duplicate")
+
+    function removeDuplicate(arr) {
+        let res = []
+        arr.forEach(el => {
+            if (!res.includes(el)) {
+                res.push(el)
+            }
+        })
+
+
+        return res
+    }
+
+    console.log(removeDuplicate([1, 3, 3, 3, 1, 5, 6, 7, 8, 1]))
+
+
+    console.log(" merge two sorted array ")
+
+    function mergeSortedArray(a, b) {
+        return [...a, ...b].sort((a, b) => a - b)
+    }
+
+    function mergeSortedArray1(a, b) {
+        return a.concat(b).sort((a, b) => b - a)
+    }
+
+    console.log(mergeSortedArray([2, 5, 6, 9], [1, 2, 3, 29]))
+    console.log(mergeSortedArray1([2, 5, 6, 9], [1, 2, 3, 29]))
+
+
+    function swapNumb(a, b) {
+        console.log('before swap: ', 'a: ', a, 'b: ', b);
+        b = a + b
+        a = b - a
+        b = b - a
+        console.log('after swap: ', 'a: ', a, 'b: ', b);
+    }
+
+
+    swapNumb(2, 3);
+
+
+    console.log("reverse('you are a nice dude');")
+
+    function reverse(str) {
+        return str.split("").reverse().join("")
+    }
+
+    function reverse1(str) {
+        let newStr = ""
+        for (let i = str.length; i >= 0; i--) {
+            newStr += str[i]
+        }
+        return newStr
+    }
+
+    console.log("===========================")
+
+    console.log(reverse('you are a nice dude'))
+
+    function reverseWord(str) {
+        let arr = str.split(" ")
+
+
+        return arr.map(el => {
+            return el.split("").reverse().join("")
+        }).join(" ")
+    }
+
+    console.log(reverseWord("How would you reverse words in a sentence"))
+    console.log("===========================")
+    console.log("firstNonRepeatChar('the quick brown fox jumps then quickly blow air');")
+
+    function firstNonRepeatChar(str) {
+
+        for (let i = 0; i < str.length; i++) {
+
+            if (str.replace(str[i], "").includes(str[i]) === false) {
+                return str[i]
+            }
+        }
+        return "не найдено"
+    }
+
+    console.log(firstNonRepeatChar('the quick brown fox jumps then quickly blow air'))
+    console.log('the quick brown fox jumps then quickly blow air'.replace("t", ""))
+
+    console.log("===========================")
+    console.log("remove duplicate char")
+
+    function removeDuplicateChar(str) {
+        let res = ""
+        for (let i = 0; i < str.length; i++) {
+            if (str.replace(str[i], "").includes(str[i]) === false) {
+                res += str[i]
+            }
+        }
+        return res
+    }
+
+    console.log(removeDuplicateChar('Learn more javascript dude'))
+
+
+    console.log("===========================")
+    console.log("checkpalindrome")
+
+    function isPalindrome(str) {
+        return str === str.split("").reverse("").join("")
+    }
+
+    console.log(isPalindrome('madam'))
+    console.log(isPalindrome('madeam'))
+
+    console.log("===========================")
+    console.log("random between 5 to 7")
+
+
+    function rand7() {
+        return 5 + Math.floor(Math.random() * 2)
+    }
+
+    console.log(rand7())
+
+
+    console.log("===========================")
+    console.log(" missing number")
+
+    function missingNumber(arr) {
+        for (let i = 1; i <= arr.length; i++) {
+            if (arr.includes(i) === false) {
+                return i
+            }
+        }
+    }
+
+
+    console.log(missingNumber([5, 2, 6, 1, 3]))
+
+
+    console.log("===========================")
+    console.log("Sum of two")
+
+    function sumFinder(arr, sum) {
+        let tempvalue = arr[0]
+        for (let i = 0; i <= arr.length; i++) {
+            if (sum === tempvalue + arr[i]) {
+                return true
+            }
+        }
+
+        return false
+
+    }
+
+
+    console.log(sumFinder([6, 4, 3, 2, 1, 7], 2))
+    console.log(sumFinder([6, 4, 3, 2, 1, 7], 9))
+
+
+    console.log("===========================")
+    console.log("Counting Zeros")
+
+    function countZero(n) {
+        let count = 0;
+        for (let i = 1; i <= n; i++) {
+            if (`${i}`.includes("0")) {
+                let adf = +`${i}`.match(/0/g).length
+                count = count + adf
+            }
+
+        }
+        return count
+
+    }
+    console.log(countZero(2014))
+
+    console.log("===========================")
+    console.log("function subStringFinder(str, subStr){")
+
+    function subStringFinder(str, subStr){
+        return str.indexOf(subStr)
+    }
+    console.log(subStringFinder('abbcdabbbbbck', 'ab'))
+    console.log(subStringFinder('abbcdabbbbbck', 'bck'))
+    console.log(subStringFinder('abbcdabbbbbck', 'bbbck'))
 
 
 </script>
