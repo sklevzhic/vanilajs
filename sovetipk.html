@@ -14,59 +14,148 @@
 <script>
     let users = [
         {
-            name: "Клевжиц Александр Юрьевич",
-            position: "инженер-программист",
-            id: "131"
+            name: "Шеститко Ирина Владимировна",
+            position: "директор ИПКиП, председатель Совета",
+            id: "15",
+            imageSrc: "shestitko.jpg",
         },
         {
-            name: "Клевжиц Александр Юрьъевич",
-            position: "инженер-программист",
-            id: "131"
+            name: "Радыгина Вероника Валерьевна",
+            position: "заместитель директора по учебной работе ИПКиП, заместитель председателя Совета",
+            id: "17",
+            imageSrc: "radygina.jpg",
         },
         {
-            name: "Клевжиц Александр Юрьъевич",
-            position: "инженер-программист",
-            id: "131"
+            name: "Захарова Юлия Владимировна",
+            position: "секретарь Совета, доцент кафедры андрагогики",
+            id: "45",
+            imageSrc: "zaharova.jpg",
         },
+        {
+            name: "Клезович Ольга Валерьевна",
+            position: "декан факультета дополнительного профессионального образования",
+            id: "95",
+            imageSrc: "klezovich1.jpg",
+        },
+
+        {
+            name: "Кислякова Юлия Николаевна",
+            position: "декан факультета управления и профессионального развития педагогов",
+            id: "85", imageSrc: "kislyakova.jpg",
+        },
+        {
+            name: "Яковенко Сергей Владимирович",
+            position: "декан факультета доуниверситетской подготовки",
+            id: "https://fdp.bspu.by/teachers/9",
+            imageSrc: "yakovenko.jpg",
+        },
+        {
+            name: "Сурикова Оксана Валентиновна",
+            position: "заведующий кафедрой менеджмента и образовательных технологий",
+            id: "255", imageSrc: "surikova.jpg",
+        },
+        {
+            name: "Алтынцева Елена Николаевна",
+            position: "заведующий кафедрой андрагогики",
+            id: "231", imageSrc: "altyn.jpg",
+        },
+        {
+            name: "Цытрон Елена Владимировна",
+            position: "заведующий кафедрой методики преподавания интегрированных школьных курсов",
+            id: "https://fdp.bspu.by/cytron-elena-vladimirovna", imageSrc: "cytron.jpg",
+        },
+        {
+            name: "Сороко Инна Николаевна",
+            position: "начальник учебно-методического отдела ИПКиП ",
+            id: "123", imageSrc: "soroko.jpg",
+        },
+        {
+            name: "Моисеева Наталья Александровна",
+            position: "начальник центра дополнительного образования «Альтернатива»",
+            id: "https://kursy.bspu.by/team-showcase/moiseeva-natal-ya-aleksandrovna/", imageSrc: "moiseeva.jpg",
+        },
+        {
+            name: "Евдокимова Вероника Анатольевна",
+            position: "специалист по работе со слушателями ИПКиП",
+            id: "267", imageSrc: "evdokimova.jpg",
+        },
+        {
+            name: "Быстрякова Наталья Вячеславовна",
+            position: "старший преподаватель кафедры менеджмента и образовательных технологий, председатель профкома ИПКиП",
+            id: "39", imageSrc: "bystryakova.jpg",
+        },
+        {
+            name: "Владимирская Елена Алексеевна",
+            position: "методист учебно-методического отдела",
+            id: "115", imageSrc: "vladimir.jpg",
+        },
+        {
+            name: "Ракова Ольга Петровна",
+            position: "старший преподаватель методики преподавания школьных интегрированных курсов",
+            id: "#", imageSrc: "rakova.jpg",
+        },
+        {
+            name: "Кесарева Ольга Валентиновна",
+            position: "преподаватель-стажер методики преподавания школьных интегрированных курсов",
+            id: "https://fdp.bspu.by/kesareva-olga-valentinovna", imageSrc: "kesareva.jpg",
+        },
+        {
+            name: "Коревко Светлана Геннадьевна",
+            position: "слушатель группы ПП-212 специальности переподготовки 1-03 04 72 Практическая психология",
+            id: "#", imageSrc: "korevko.jpg",
+        },
+        {
+            name: "Елдашев Олег Валерьевич",
+            position: "слушатель группы ПДС-211 специальности переподготовки 1-08 01 71 Педагогическая деятельность специалистов",
+            id: "#", imageSrc: "eldashev.jpg",
+        },
+        {
+            name: "Воробей Оксана Владимировна",
+            position: "слушатель группы НО-204 специальности переподготовки 1-01 03 73 Начальное образование",
+            id: "#", imageSrc: "vorobei.jpg",
+        },
+        {
+            name: "Винник Александра Сергеевна",
+            position: "слушатель группы ПП-213 специальности переподготовки 1-03 04 72 Практическая психология",
+            id: "#", imageSrc: "vinnik.jpg",
+        },
+
+
     ]
 
     const teachers = document.getElementById("teachers")
 
     class User {
-        constructor({name, position, id}) {
+        constructor({name, position, id, imageSrc}) {
             this.name = name
             this.position = position
             this.id = id
+            this.imageSrc = imageSrc
         }
 
         renderUser() {
-            const teacher = document.createElement("a")
-            teacher.setAttribute("href",`https://ipkip.bspu.by/teachers/${this.id}`);
-            teacher.classList.add("teacher_item")
 
-            const teacherImage = document.createElement("img")
-            teacherImage.classList.add("teacher_image")
-            teacherImage.setAttribute("src",`https://ipkip.bspu.by/teachers/${this.name}.jpg`);
-            teacher.append(teacherImage)
+            let divItem = document.createElement('a');
+            divItem.setAttribute("href", (this.id.includes("http")) ? this.id : (this.id === "#") ? `#` : `/teachers/${this.id}`)
+            divItem.setAttribute("target", (this.id.includes("http")) ? "_blank" : "")
 
-            const teacherInfo = document.createElement("div")
-            teacherInfo.classList.add("teacher_info")
-            teacher.append(teacherInfo)
+            divItem.classList.add("teacher")
+            let content = ` <img alt="${this.name}" src="/admin-panel/vendor/kcfinder/upload/images/sovet/${(this.imageSrc) ? this.imageSrc : "placeholder.jpg"}">
+                                <h4 class="name">${this.name}</h4>
+                            <i>${this.position}</i>`
+            divItem.innerHTML = content
 
-            const teacherName = document.createElement("h5")
-            teacherName.classList.add("teacher_name")
-            teacherName.innerText = this.name
-            teacherInfo.append(teacherName)
 
-            const teacherPosition = document.createElement("p")
-            teacherPosition.classList.add("teacher_position")
-            teacherPosition.innerText = this.position
-            teacherInfo.append(teacherPosition)
-            return teacher
+            return divItem
         }
+
+
     }
+
     let usersObj = generateUsers(users)
+    debugger
     renderTodoItems(usersObj)
+
     function generateUsers(items) {
         const arr = []
         items.map(item => {
@@ -74,6 +163,7 @@
         })
         return arr
     }
+
     function renderTodoItems(items) {
         items.forEach(el => {
             teachers.append(el.renderUser())
@@ -83,12 +173,36 @@
 
 
 </script>
+<style type="text/css">.teacher img {
+    width: 184px;
+    height: 184px;
+    border-radius: 50%
+}
 
-<style>
-    .teacher_item {
-        border: 1px solid black;
-    }
+.teacher {
+    width: 184px;
+    height: 345px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom: 5px;
+    margin-right: 15px;
+}
+
+.teacher img:hover {
+    /*border-radius: 0;*/
+}
+
+.teacher:hover {
+    /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);*/
+    cursor: pointer;
+}
+
+.teacher:hover > img {
+    /*border-radius: 0;*/
+}
 </style>
+
 
 </body>
 </html>
