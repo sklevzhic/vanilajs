@@ -30,9 +30,11 @@ function addItem() {
                 <figcaption class="start_date">
                 <a class="modal_link modal_span" href="/specialnosti-perepodgotovki/${select1.options[select1.selectedIndex].value}"> 
                 начало обучения:<br/>
-                    28 февраля</a>
+                    ${"марта"}</a>
                     </figcaption>
             </figure>
+            
+            
             <div class="flx_cont">
                 <p class="speciality_name"><a class="modal_link"
                                                   href="/specialnosti-perepodgotovki/${select1.options[select1.selectedIndex].value}">${select1.options[select1.selectedIndex].text}</a></p>
