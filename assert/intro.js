@@ -15,8 +15,8 @@ function decompressArrReq(inputArr) {
         }
     })
     return result
-
 }
+
 // Преобразование в строку
 function decompressArrStr(inputArr) {
     return inputArr.toString().split(",").map(el => +el)
