@@ -1,47 +1,22 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-<hr>
-<select name="select" id="select1">
-    <option value="psihologiya-semeinyh-otnoshenii">Психология семейных отношений</option>
-    <option value="doshkolnoe-obrazovanie">Дошкольное образование</option>
-    <option value="informatika">Информатика</option>
-    <option value="nachalnoe-obrazovanie">Начальное образование</option>
-    <option value="logopediya">Логопедия</option>
-    <option value="psihologiya-semeinyh-otnoshenii">Психология семейных отношений</option>
-    <option value="fizkulturno-ozdorovitelnaya-rabota-v-uchrezhdeniyah-obrazovaniya-kvalifikaciya-prepodavatel-fizicheskoi-kultury">
-        Физкультурно-оздоровительная работа в учреждениях образования
-    </option>
-    <option value="integrirovannoe-obuchenie-i-vospitanie-v-doshkolnom-obrazovanii">Интегрированное обучение и
-        воспитание в дошкольном образовании
-    </option>
+let items = document.querySelectorAll(".speciality-item ")
+let arr =  Array.from(items)
+let b = arr.map(el => {
 
-</select>
+    return {
+        speciality: el.children[1].innerText.slice(0, el.children[1].innerText.indexOf("\n")),
+        image: el.children[1].children[0].getAttribute("src").replace("https://ipkip.bspu.by",""),
+        link: el.children[1].children[2].getAttribute("href")
+    }
+})
 
-<input type="text" id="spec1">
-<hr>
-<button>dfgfd</button>
-<hr>
-
-<textarea name="" id="textarea" cols="30" rows="10">
-
-</textarea>
-<script src="script.js">
-
+console.log(b)
 
     // [
-    //     {
-    //         "speciality": "Психология семейных отношений",
-    //         "image": "/admin-panel/vendor/kcfinder/upload/images/specialnosti_perepodgotovki/pso.jpg",
-    //         "link": "/specialnosti-perepodgotovki/psihologiya-semeinyh-otnoshenii"
-    //     },
+    // {
+    //     "speciality": "Психология семейных отношений",
+    //     "image": "/admin-panel/vendor/kcfinder/upload/images/specialnosti_perepodgotovki/pso.jpg",
+    //     "link": "/specialnosti-perepodgotovki/psihologiya-semeinyh-otnoshenii"
+    // },
     //     {
     //         "speciality": "Психология",
     //         "image": "/admin-panel/vendor/kcfinder/upload/images/specialnosti_perepodgotovki/psy.jpg",
@@ -128,10 +103,3 @@
     //         "link": "/specialnosti-perepodgotovki/web-dizain-i-kompyuternaya-grafika"
     //     }
     // ]
-
-</script>
-
-
-
-</body>
-</html>
