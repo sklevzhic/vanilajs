@@ -1,105 +1,101 @@
-let items = document.querySelectorAll(".speciality-item ")
-let arr =  Array.from(items)
-let b = arr.map(el => {
-
-    return {
-        speciality: el.children[1].innerText.slice(0, el.children[1].innerText.indexOf("\n")),
-        image: el.children[1].children[0].getAttribute("src").replace("https://ipkip.bspu.by",""),
-        link: el.children[1].children[2].getAttribute("href")
+let specialities = [
+    {
+        discipline: '1-01 03 72 Дошкольное образование',
+        link: 'https://bspu.by/moodle/course/index.php?categoryid=419'
+    },
+    {
+        discipline: '1-02 03 71 Иностранный язык (английский)',
+        link: 'https://bspu.by/moodle/course/index.php?categoryid=417'
+    },
+    {
+        discipline: '1-03 03 76 Интегрированное обучение и воспитание в дошкольном образовании',
+        link: 'https://bspu.by/moodle/course/index.php?categoryid=467'
+    },
+    {
+        discipline: '1 03 03 77 Интегрированное обучение и воспитание в школьном образовании',
+        link: 'https://bspu.by/moodle/course/index.php?categoryid=465'
+    },
+    {
+        discipline: '1-02 05 71 Информатика',
+        link: 'https://bspu.by/moodle/course/index.php?categoryid=463'
+    },
+    {
+        discipline: '1-02 05 72 Математика',
+        link: 'https://bspu.by/moodle/course/index.php?categoryid=469'
+    },
+    {
+        discipline: '1-09 01 72 Менеджмент учреждений дошкольного, общего среднего образования, дополнительного образования детей и молодежи',
+        link: 'https://bspu.by/moodle/course/index.php?categoryid=457'
+    },
+    {
+        discipline: '1-01 03 73 Начальное образование',
+        link: 'https://bspu.by/moodle/course/index.php?categoryid=451'
+    },
+    {
+        discipline: '1-08 01 71 Педагогическая деятельность специалистов',
+        link: 'https://bspu.by/moodle/course/index.php?categoryid=461'
+    },
+    {
+        discipline: '1-23 01 77 Психология управления',
+        link: 'https://bspu.by/moodle/course/index.php?categoryid=459'
+    },
+    {
+        discipline: '1-03 04 71 Социальная педагогика',
+        link: 'https://bspu.by/moodle/course/index.php?categoryid=407'
+    },
+    {
+        discipline: '1-03 02 71 Физкультурно-оздоровительная работа в учреждениях образования',
+        link: 'https://bspu.by/moodle/course/index.php?categoryid=413'
+    },
+    {
+        discipline: '1-03 03 71 Логопедия',
+        link: 'https://bspu.by/moodle/course/index.php?categoryid=553'
+    },
+    {
+        discipline: '1-23 01 71 Психология',
+        link: 'https://bspu.by/moodle/course/index.php?categoryid=637'
+    },
+    {
+        discipline: '1-03 04 72 Практическая психология',
+        link: 'https://bspu.by/moodle/course/index.php?categoryid=639'
+    },
+    {
+        discipline: '1-23 01 75 Психология семейных отношений',
+        link: 'https://bspu.by/moodle/course/index.php?categoryid=641'
+    },
+    {
+        discipline: '1-03 03 08 Олигофренопедагогика',
+        link: 'https://bspu.by/moodle/course/index.php?categoryid=1097'
     }
-})
+]
 
-console.log(b)
+function getCourses() {
+    let tempArr = []
+    let categories = document.querySelectorAll(".category")
+    let courses = document.querySelectorAll(".coursebox")
+    if (categories.length !== 0) {
+        let a = fetchCoursesFromSpecialities(categories)
+        tempArr.push(...a)
+    }
 
-    // [
-    // {
-    //     "speciality": "Психология семейных отношений",
-    //     "image": "/admin-panel/vendor/kcfinder/upload/images/specialnosti_perepodgotovki/pso.jpg",
-    //     "link": "/specialnosti-perepodgotovki/psihologiya-semeinyh-otnoshenii"
-    // },
-    //     {
-    //         "speciality": "Психология",
-    //         "image": "/admin-panel/vendor/kcfinder/upload/images/specialnosti_perepodgotovki/psy.jpg",
-    //         "link": "/specialnosti-perepodgotovki/psihologiya"
-    //     },
-    //     {
-    //         "speciality": "Практическая психология",
-    //         "image": "/admin-panel/vendor/kcfinder/upload/images/specialnosti_perepodgotovki/pp.jpg",
-    //         "link": "/specialnosti-perepodgotovki/prakticheskaya-psihologiya"
-    //     },
-    //     {
-    //         "speciality": "Социальная педагогика",
-    //         "image": "/admin-panel/vendor/kcfinder/upload/images/specialnosti_perepodgotovki/sp.jpg",
-    //         "link": "/specialnosti-perepodgotovki/socialnaya-pedagogika"
-    //     },
-    //     {
-    //         "speciality": "Педагогическая деятельность специалистов",
-    //         "image": "/admin-panel/vendor/kcfinder/upload/images/photogall/DO,PP.png",
-    //         "link": "/specialnosti-perepodgotovki/pedagogicheskaya-deyatelnost-specialistov"
-    //     },
-    //     {
-    //         "speciality": "Психология управления",
-    //         "image": "/admin-panel/vendor/kcfinder/upload/images/specialnosti_perepodgotovki/pu.jpg",
-    //         "link": "/specialnosti-perepodgotovki/psihologiya-upravleniya"
-    //     },
-    //     {
-    //         "speciality": "Логопедия",
-    //         "image": "http://ipkip.bspu.by/admin-panel/vendor/kcfinder/upload/images/specialnosti_perepodgotovki/logop.jpg",
-    //         "link": "/specialnosti-perepodgotovki/logopediya"
-    //     },
-    //     {
-    //         "speciality": "Интегрированное обучение и воспитание в дошкольном образовании",
-    //         "image": "http://ipkip.bspu.by/admin-panel/vendor/kcfinder/upload/images/specialnosti_perepodgotovki/ido.jpg",
-    //         "link": "/specialnosti-perepodgotovki/integrirovannoe-obuchenie-i-vospitanie-v-doshkolnom-obrazovanii"
-    //     },
-    //     {
-    //         "speciality": "Интегрированное обучение и воспитание в школьном образовании",
-    //         "image": "http://ipkip.bspu.by/admin-panel/vendor/kcfinder/upload/images/specialnosti_perepodgotovki/ish.jpg",
-    //         "link": "/specialnosti-perepodgotovki/integrirovannoe-obuchenie-i-vospitanie-v-shkolnom-obrazovanii"
-    //     },
-    //     {
-    //         "speciality": "Олигофренопедагогика",
-    //         "image": "http://ipkip.bspu.by/admin-panel/vendor/kcfinder/upload/images/specialnosti_perepodgotovki/oligo.jpg",
-    //         "link": "/specialnosti-perepodgotovki/oligofrenopedagogika"
-    //     },
-    //     {
-    //         "speciality": "Иностранный язык",
-    //         "image": "/admin-panel/vendor/kcfinder/upload/images/specialnosti_perepodgotovki/eng.jpg",
-    //         "link": "/specialnosti-perepodgotovki/inostrannyi-yazyk"
-    //     },
-    //     {
-    //         "speciality": "Информатика",
-    //         "image": "/admin-panel/vendor/kcfinder/upload/images/specialnosti_perepodgotovki/inf.jpg",
-    //         "link": "/specialnosti-perepodgotovki/informatika"
-    //     },
-    //     {
-    //         "speciality": "Математика",
-    //         "image": "/admin-panel/vendor/kcfinder/upload/images/specialnosti_perepodgotovki/matem.jpg",
-    //         "link": "/specialnosti-perepodgotovki/matematika"
-    //     },
-    //     {
-    //         "speciality": "Физкультурно-оздоровительная работа в учреждениях образования",
-    //         "image": "/admin-panel/vendor/kcfinder/upload/images/specialnosti_perepodgotovki/fo.jpg",
-    //         "link": "/specialnosti-perepodgotovki/fizkulturno-ozdorovitelnaya-rabota-v-uchrezhdeniyah-obrazovaniya-kvalifikaciya-prepodavatel-fizicheskoi-kultury"
-    //     },
-    //     {
-    //         "speciality": "Начальное образование",
-    //         "image": "http://ipkip.bspu.by/admin-panel/vendor/kcfinder/upload/images/specialnosti_perepodgotovki/no.jpg",
-    //         "link": "/specialnosti-perepodgotovki/nachalnoe-obrazovanie"
-    //     },
-    //     {
-    //         "speciality": "Дошкольное образование",
-    //         "image": "http://ipkip.bspu.by/admin-panel/vendor/kcfinder/upload/images/specialnosti_perepodgotovki/do.jpg",
-    //         "link": "/specialnosti-perepodgotovki/doshkolnoe-obrazovanie"
-    //     },
-    //     {
-    //         "speciality": "Менеджмент учреждений дошкольного, общего среднего образования, дополнительного образования детей и молодежи",
-    //         "image": "/admin-panel/vendor/kcfinder/upload/images/specialnosti_perepodgotovki/mo.jpg",
-    //         "link": "/specialnosti-perepodgotovki/menedzhment-uchrezhdenii-doshkolnogo-obshchego-srednego-obrazovaniya-dopolnitelnogo-obrazovaniya-detei-i-molodezhi"
-    //     },
-    //     {
-    //         "speciality": "Web-дизайн и компьютерная графика",
-    //         "image": "http://ipkip.bspu.by/admin-panel/vendor/kcfinder/upload/images/specialnosti_perepodgotovki/webdes.png",
-    //         "link": "/specialnosti-perepodgotovki/web-dizain-i-kompyuternaya-grafika"
-    //     }
-    // ]
+    if (courses.length !== 0) {
+        specialities[0].courses = Array.from(courses).map(el => {
+            return {
+                discipline: el.children[0].innerText,
+                teacher: el.children[1].innerText.replace("Преподаватель курса: ", ""),
+            }
+        })
+    }
+
+    // specialities[0].courses = Array.from(courses).map(el => {})
+
+    return tempArr
+}
+function fetchCoursesFromSpecialities(arr) {
+    return Array.from(arr).map(el => {
+        return `https://bspu.by/moodle/course/index.php?categoryid=${el.getAttribute("data-categoryid")}`
+    })
+}
+
+console.log(getCourses())
+
