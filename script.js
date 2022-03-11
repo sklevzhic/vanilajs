@@ -113,15 +113,21 @@ function addItem() {
 console.log()
 
 
-let strrr = "начало\\ nоб25.04.2022учения:\\nоффлайн\\n14.03.2022,\\nонлайн\\n"
-console.log(getMinDate(strrr))
+let arr1 = [
 
-function getMinDate(str) {
-    let arr = Array.from(str.match(/[0-9]{2}.[0-9]{2}.[0-9]{4}/g))
-    let min = arr[0]
+    {
+        "dateNum": 1653426000000,
+        "dateText": "25 мая"
+    },
+    {
+        "dateNum": 1649883600000,
+        "dateText": "14 апреля"
+    },
+]
 
-    return min
-}
+
+console.log(arr1.sort((a,b) => a.dateNum - b.dateNum))
+
 // let images = {
 //     "Психология семейных отношений": "po.jpg",
 //     "Дошкольное образование": "do.jpg",
