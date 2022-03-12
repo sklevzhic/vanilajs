@@ -1,7 +1,6 @@
 let items = document.querySelectorAll(".speciality-item ")
 let arr = Array.from(items)
 let b = arr.map(el => {
-
     return {
         speciality: el.children[1].innerText.slice(0, el.children[1].innerText.indexOf("\n")),
         image: el.children[1].children[0].getAttribute("src").replace("https://ipkip.bspu.by", ""),
@@ -10,7 +9,6 @@ let b = arr.map(el => {
         )
     }
 })
-
 
 function getMinDate(str) {
     let dates = str.match(/[0-9]{2}.[0-9]{2}.[0-9]{4}/g)
@@ -21,7 +19,7 @@ function getMinDate(str) {
         let arr = Array.from(dates)
         let newArr = arr.map(el => formatDate(el))
         newArr.sort((a, b) => a.dateNum - b.dateNum)
-        let dateNow = Date.now();
+        let dateNow = Date.now() + 518400000;
 
         let currentDate = (newArr[0].dateNum > dateNow) ? newArr[0] : newArr[1] || {dateNum: 9999999999998}
         return currentDate
@@ -47,22 +45,32 @@ function formatDate(date) {
     }
 }
 
-
-let sortSpecialities = b.sort((a, b) => a.date.dateNum - b.date.dateNum)
-console.log(sortSpecialities)
-
 let rees = ''
 
+let sortSpecialities = b.sort((a, b) => a.date.dateNum - b.date.dateNum)
+const deleteItem = (e) => {
+    e.preventDefault()
+    sortSpecialities = sortSpecialities.filter(el => !e.currentTarget.innerText.includes(el.speciality))
+    rerender()
+    document.querySelector("textarea").value = rees
+}
 
-for (let i = 0; i <= 4; i++) {
-    rees += ` <div class="modal-body">
+
+rerender()
+
+
+function rerender() {
+    rees = ''
+
+    for (let i = 0; i <= 2; i++) {
+        rees += ` <div class="modal-body item">
         <div class="dimming_effect">
             <figure class="picture_caption">
             <a class="modal_link" href=${sortSpecialities[i].link}>
             <img alt="1" class="modal_picture" src=${sortSpecialities[i].image}>
             </a>
                 <figcaption class="start_date">
-                <a class="modal_link modal_span" href=${sortSpecialities[i].link}">
+                <a class="modal_link modal_span" href=${sortSpecialities[i].link}>
                 начало обучения:<br/>
                     ${sortSpecialities[i].date.dateText}</a>
                     </figcaption>
@@ -75,7 +83,46 @@ for (let i = 0; i <= 4; i++) {
             </div>
         </div>
     </div>`
+    }
+
+
+    let modal = document.createElement("div")
+    modal.innerHTML = "dsfdf"
+
+    modal.style.position = "absolute";
+    modal.style.width = "100%";
+    modal.style.height = "100%";
+    modal.style.left = "0";
+    modal.style.top = "0";
+    modal.style.background = "#ffffffa3";
+    modal.style.padding = "100px"
+
+
+    document.body.append(modal)
+
+    modal.innerHTML = `<div class="modal-content" id="modal-content-id">
+<div class="modal_wrapper">
+<div class="modals" style="display: flex; flex-wrap: wrap; justify-content: space-evenly">
+${rees}
+</div>
+
+</div>
+<button id="btnsend" onclick="getCode()">sfsd</button>
+</div>`
+
+
+    document.querySelectorAll(".item").forEach((el, i) => {
+        el.addEventListener("click", (e) => deleteItem(e, i))
+    })
+
+
 }
 
+document.querySelector("#btnsend").addEventListener("click", getCode)
 
-document.querySelector(".breadcrumb").innerHTML = `<textarea>${rees}</textarea>`
+function getCode() {
+    let textarea = document.createElement("textarea")
+    document.querySelector(".modal_wrapper").append(textarea)
+    textarea.value = document.querySelector(".modals").outerHTML
+}
+
