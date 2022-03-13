@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+(7 kyu) https://www.codewars.com/kata/matrix-creation
+(7 kyu) https://www.codewars.com/kata/basics-04-rotate-matrix
+
+
+<script>
+    // (6 kyu) https://www.codewars.com/kata/array-dot-diff
+    function arrayDiff(arr1, arr2) {
+        return arr1.filter(el => !arr2.includes(el))
+    }
+
+    // console.log(arrayDiff([1,2],[1]))
+
+
+    // (7 kyu) https://www.codewars.com/kata/convert-hash-to-an-array
+
+    function convertHashToArray(hash) {
+
+        return Object.keys(hash).sort().map(el => {
+            return [el, hash[el]]
+        })
+    }
+
+    // console.log(convertHashToArray({name: "Jeremy", age: 24, role: "Software Engineer"}))
+
+
+    const rotateMatrix = arr => {
+        let columns = arr.length
+        let res = []
+
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = arr[i].length - 1; j >=0; j--) {
+
+                res.push(Array(arr[i].length).fill("1"))
+
+            }
+        }
+        return res
+    }
+
+    console.log(rotateMatrix([[-1, 4, 5], [2, 3, 4]]))
+
+    // Input: {{-1, 4, 5},
+    //     { 2, 3, 4}}
+    //
+    // Output: {{ 5, 4},
+    //     { 4, 3},
+    //     {-1, 2}}
+</script>
+
+
+</body>
+</html>
