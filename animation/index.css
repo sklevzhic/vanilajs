@@ -1,0 +1,29 @@
+.item {
+    border: 1px solid black;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.item1 {
+    background: #ffc6c6;
+    height: 100px;
+}
+.item2 {
+    background: #deffb9;
+    width: 200px;
+    height: 500px;
+    position: sticky;
+    top: 0
+}
+.item3 {
+    background: #6a27b2;
+    width: 900px;
+    height: 1500px;
+}
+.item4 { background: #ffaffb; }
+.item5 { background: #fdb6ce; }
+.item6 { background: #e7fffb; }
+.item7 { background: #d3ff9a; }
