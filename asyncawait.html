@@ -13,15 +13,12 @@
 </div>
 <script>
 
-    let sleep = function (ms) {
-        return new Promise(function (resolve) {
-            return setTimeout(() => resolve(), ms);
-        });
-    };
-
-    sleep(2000).then(console.log('1d'));
-    sleep(2000).then(() => console.log('5'));
-
+    fetch('https://ipkip.bspu.by/specialnosti-perepodgotovki', { mode: 'no-cors'})
+        .then(blob => blob.text())
+        .then(data => {
+            console.table(data);
+            return data;
+        })
 
 </script>
 
