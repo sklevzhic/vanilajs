@@ -16,6 +16,8 @@ let strings = {
 
 
 
+
+
 let specialities = JSON.parse(obj.jsonTable)
 
 const groups = Object.keys(strings).map(key => {
