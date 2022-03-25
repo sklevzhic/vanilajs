@@ -5,11 +5,12 @@ let b = arr.map(el => {
         speciality: el.children[1].innerText.slice(0, el.children[1].innerText.indexOf("\n")),
         image: el.children[1].children[0].getAttribute("src").replace("https://ipkip.bspu.by", ""),
         link: el.children[1].children[2].getAttribute("href"),
-        date: getMinDate(el.children[0].textContent.replace(new RegExp("\\r?\\n", "g"), "")
+        kval: el.children[1].innerText.slice(el.children[1].innerText.indexOf(": "),el.children[1].innerText.length ),
+        date: getMinDate(el.children[0].textContent.replace(new RegExp("\\r?\\n", "g"), ""),
         )
     }
 })
-
+console.log(b)
 function getMinDate(str) {
     let dates = str.match(/[0-9]{2}.[0-9]{2}.[0-9]{4}/g)
 
