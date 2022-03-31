@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<div id="iddd"></div>
+
+
+<script>
+    let a = [{
+        "speciality": "Дошкольное образование",
+        "theme": [{
+            "theme": "Тема Дошкольное",
+            "files": [{
+                "name": "Презентация Microsoft PowerPoint.pptx",
+                "id": "1f8F3x4UOE8oDOC4CwX4c24A2r6F8NZsd"
+            }, {"name": "Фото.bmp", "id": "1S2b5raKQPY-TitcJso_svuNoPAVmbJTr"}]
+        }]
+    }, {
+        "speciality": "Начальное образование",
+        "theme": [{
+            "theme": "Тема 1",
+            "files": [{"name": "Презентация.pptx", "id": "1bzgVNW6MuqYXHS7GlkEcT4Trxyo9uDLx"}, {
+                "name": "Фото.bmp",
+                "id": "1uDRoq_Jig0eP53I6vFyk0987DWcto45N"
+            }]
+        }]
+    }, {"speciality": "Тема1"}]
+    let res = []
+    let b = a.forEach(el => {
+        if (el.theme) {
+            el.theme.forEach(theme => {
+
+                let a = theme.files.filter(el => el.name.includes("bmp"))[0]
+
+                res.push(                {
+                    speciality: el.speciality,
+                    theme: theme.theme,
+                    image: a ? a.id : "",
+                    presentation: theme.files.filter(el => el.name.includes("ppt"))[0].id
+                })
+            })
+        }
+    })
+    console.log(res)
+    // document.querySelector("#iddd").innerHTML = b
+</script>
+
+</body>
+</html>
