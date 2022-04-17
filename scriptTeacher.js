@@ -1,10 +1,11 @@
 let textarea = document.querySelector("#values")
+
 function handleClickButton() {
     let arrTextArr = textarea.value.split("•").filter(n => n)
     let result = []
     arrTextArr.forEach(el => {
         if (el.length > 8) {
-            result.push(el.trim().replace("\t"," "))
+            result.push(el.trim().replace("\t", " "))
         }
 
     })
@@ -12,3 +13,5 @@ function handleClickButton() {
 }
 
 document.querySelector("button").addEventListener("click", handleClickButton)
+
+

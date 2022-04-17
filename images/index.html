@@ -11,46 +11,28 @@
 
 <div id="iddd"></div>
 
+<img data-id="1" src="https://drive.goog1KQPY-TitcJso_svuNoPAVmbJTr" alt="">
+<img data-id="2" src="https://drive.google.com/uc?export=view&id=1S2b5raKQPY-TitcJso_svuNoPAVmbJTr" alt="">
+<img data-id="3" src="https://drive.google.com/uc?expo1rt=view&id=1S2b5raKQPY-TitcJso_svuNoPAVmbJTr" alt="">
+<img data-id="4" src="https://drive.google.com/uc?export=view&id=1S2b5raKQPY-TitcJso_svuNoPAVmbJTr" alt="">
+<img data-id="5" src="https://drive.google.com/uc?export=view&id=1S2b5raKQPY-TitcJso_svuNoPAVmbJTr" alt="">
+<img data-id="6" src="https://drive.google.com/uc?export=view&id=1S2b5raKQPY-TitcJso_svuNoPAVmbJTr" alt="">
+
 
 <script>
-    let a = [{
-        "speciality": "Дошкольное образование",
-        "theme": [{
-            "theme": "Тема Дошкольное",
-            "files": [{
-                "name": "Презентация Microsoft PowerPoint.pptx",
-                "id": "1f8F3x4UOE8oDOC4CwX4c24A2r6F8NZsd"
-            }, {"name": "Фото.bmp", "id": "1S2b5raKQPY-TitcJso_svuNoPAVmbJTr"}]
-        }]
-    }, {
-        "speciality": "Начальное образование",
-        "theme": [{
-            "theme": "Тема 1",
-            "files": [{"name": "Презентация.pptx", "id": "1bzgVNW6MuqYXHS7GlkEcT4Trxyo9uDLx"}, {
-                "name": "Фото.bmp",
-                "id": "1uDRoq_Jig0eP53I6vFyk0987DWcto45N"
-            }]
-        }]
-    }, {"speciality": "Тема1"}]
-    let res = []
-    let b = a.forEach(el => {
-        if (el.theme) {
-            el.theme.forEach(theme => {
-
-                let a = theme.files.filter(el => el.name.includes("bmp"))[0]
-
-                res.push(                {
-                    speciality: el.speciality,
-                    theme: theme.theme,
-                    image: a ? a.id : "",
-                    presentation: theme.files.filter(el => el.name.includes("ppt"))[0].id
-                })
-            })
-        }
-    })
-    console.log(res)
-    // document.querySelector("#iddd").innerHTML = b
+    let images = document.querySelectorAll("img");
+    let loaded = []
+    let noImage = []
+    for (let i = 0; i < images.length; i++) {
+        images[i].addEventListener("load", () => loaded.push(images[i].getAttribute("data-id")));
+    }
+    console.log()
 </script>
-
+<style>
+    img {
+        width: 100px;
+        height: 100px;
+    }
+</style>
 </body>
 </html>
