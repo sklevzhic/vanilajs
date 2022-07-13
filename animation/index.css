@@ -1,29 +1,29 @@
-.item {
-    border: 1px solid black;
-}
-
-body {
+* {
     margin: 0;
     padding: 0;
 }
 
-.item1 {
-    background: #ffc6c6;
-    height: 100px;
+.wrapper {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.item2 {
-    background: #deffb9;
+
+.imageWrapper {
     width: 200px;
-    height: 500px;
-    position: sticky;
-    top: 0
+    height: 200px;
 }
-.item3 {
-    background: #6a27b2;
-    width: 900px;
-    height: 1500px;
+
+.image {
+    width: 100%;
+    animation: spin 5s linear 0s infinite;
 }
-.item4 { background: #ffaffb; }
-.item5 { background: #fdb6ce; }
-.item6 { background: #e7fffb; }
-.item7 { background: #d3ff9a; }
+
+
+
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
