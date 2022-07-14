@@ -5,9 +5,11 @@ class Cell {
     }
 
 }
+
 class Board {
     cells = []
     countWin = 3
+
     constructor(size) {
         this.size = size
     }
@@ -22,27 +24,62 @@ class Board {
             this.cells.push(row)
         }
     }
-    checkWin(rowIdx, colIdx, currentValue) {
-        let current = colIdx
-        let start = +colIdx - 3 < 0 ? 0 : +colIdx - 3
-        let end = +colIdx + 3 > this.size ? this.size : +colIdx + 3
-        let count = 0
-        // проверка по вертикали
-        for (let i = start; i <= end; i++) {
-            let value = this.cells[i][rowIdx].value
-            console.log(true)
-            if (true) {
 
+    checkWin(rowIdx, colIdx, currentValue) {
+
+
+        // if (count === this.countWin) {
+        //     alert("win")
+        // }
+        // if (value === currentValue) {
+        //     count++
+        // } else {
+        //     count = 0
+        // }
+
+        let startRow = +rowIdx - this.countWin < 0 ? 0 : +rowIdx - this.countWin
+        let endRow = +rowIdx + this.countWin > this.size ? this.size - 1 : +rowIdx + this.countWin
+        let rowArray = []
+        let collArray = []
+        let diagonalLRArray = []
+        let diagonalRLArray = []
+
+        let count = 0
+
+
+        // Парсинг строки
+        let horizontalArray = this.cells[colIdx]
+        rowArray = horizontalArray.map(el => el.value)
+
+        // Парсинг столбца
+        this.cells[colIdx].forEach((el, i) => {
+            collArray.push(this.cells[i][rowIdx].value)
+        })
+
+        // Парсинг диагонали л-р
+        let cellsLength = this.cells.length - 1
+
+        let startIndex = rowIdx - colIdx
+        let x
+        let y
+
+        if (startIndex > 0) {
+            x = startIndex
+            y = 0
+
+            let aa = cellsLength - x
+            console.log(aa)
+            for (let i = 0; i <= aa; i++) {
+                console.log(i)
+                x++
+                y++
             }
+
         }
-        // // проверка по вертикали
-        // let reshor = this.cells.map(el => {
-        //     return el[rowIdx].value
-        // })
-        // let resdiag = this.cells.map(el => {
-        //     return el[rowIdx].value
-        // })
-        // console.log(resvert)
+        if (startIndex < 0) {
+            x = 0, y = Math.abs(startIndex)
+        }
+
 
     }
 }
@@ -53,12 +90,12 @@ let step = 0
 board.initialDesk()
 
 function renderBoard() {
-    board.cells.forEach((rowCells,indexRow) => {
+    board.cells.forEach((rowCells, indexRow) => {
         let boardRow = document.createElement('div');
         boardRow.classList.add("board__row")
         boardRow.classList.add("flex")
 
-        rowCells.forEach((cell,indexCol) => {
+        rowCells.forEach((cell, indexCol) => {
             let boardCell = document.createElement('div');
             boardCell.classList.add("border")
             boardCell.classList.add("w-14")
@@ -74,13 +111,14 @@ function renderBoard() {
                 boardCell.classList.add("text-red-700")
                 boardCell.innerText = cell.value
             }
-            if (!cell.value) {
-                boardCell.classList.add(step % 2 !== 0 ? "text-red-700" : "text-blue-700" )
-                boardCell.classList.add("text-opacity-0")
-                boardCell.classList.add("hover:bg-gray-200")
-                boardCell.classList.add("hover:text-opacity-50")
-                boardCell.innerText = step % 2 !== 0 ? "0" : "X"
-            }
+            // if (!cell.value) {
+            //     boardCell.classList.add(step % 2 !== 0 ? "text-red-700" : "text-blue-700" )
+            //     boardCell.classList.add("text-opacity-0")
+            //     boardCell.classList.add("hover:bg-gray-200")
+            //     boardCell.classList.add("hover:text-opacity-50")
+            //     boardCell.innerText = step % 2 !== 0 ? "0" : "X"
+            // }
+            boardCell.innerText = indexCol + " " + indexRow
             boardCell.setAttribute("data-idCell", cell.id)
             boardCell.setAttribute("data-rowIdx", indexRow)
             boardCell.setAttribute("data-colIdx", indexCol)
@@ -106,3 +144,5 @@ function handleClickCell(e) {
     }
 
 }
+
+
