@@ -6,23 +6,15 @@ class Cell {
 
 }
 
-class Board {
-    cells = []
+export class Board {
     countWin = 3
-
-    constructor(size) {
+    constructor(size, cells) {
+        this.cells = cells
         this.size = size
     }
 
     initialDesk() {
-        for (let i = 0; i < this.size; i++) {
-            let row = []
-            for (let j = 0; j < this.size; j++) {
-                row.push(new Cell())
-            }
-
-            this.cells.push(row)
-        }
+        this.cells = getDesk(this.size);
     }
 
     checkWin(rowIdx, colIdx, currentValue) {
@@ -56,32 +48,76 @@ class Board {
             collArray.push(this.cells[i][rowIdx].value)
         })
 
-        // Парсинг диагонали л-р
+        // Парсинг диагонали л-п
         let cellsLength = this.cells.length - 1
-
         let startIndex = rowIdx - colIdx
         let x
         let y
 
-        if (startIndex > 0) {
+        if (startIndex >= 0) {
             x = startIndex
             y = 0
+            let endIndex = cellsLength - startIndex
 
-            let aa = cellsLength - x
-            console.log(aa)
-            for (let i = 0; i <= aa; i++) {
-                console.log(i)
+            for (let i=0; i<=endIndex; i++) {
+                diagonalLRArray.push(this.cells[y][x].value)
                 x++
                 y++
             }
-
         }
         if (startIndex < 0) {
-            x = 0, y = Math.abs(startIndex)
+            x = 0
+            y = Math.abs(startIndex)
+            let endIndex = cellsLength + startIndex
+            for (let i=0; i<=endIndex; i++) {
+                diagonalLRArray.push(this.cells[y][x].value)
+                x++
+                y++
+            }
         }
 
+        // Парсинг диагонали п-л
+        let startIndex1 = +rowIdx + +colIdx
+        let x1
+        let y1
+        if (startIndex1 < 10) {
+            x1 = startIndex1
+            y1 = 0
+
+            for (let i=0; i<=startIndex1; i++) {
+                diagonalRLArray.push(this.cells[y1][x1].value)
+                x1--
+                y1++
+            }
+
+        }
+        if (startIndex1 >= 10) {
+            x1 = startIndex1
+            y1 = 0
+            console.log(x1)
+            console.log(y1)
+            // for (let i=0; i<=startIndex1; i++) {
+            //     diagonalRLArray.push(this.cells[y1][x1].value)
+            //     x1--
+            //     y1++
+            // }
+        }
+        console.log(diagonalRLArray)
 
     }
+}
+
+function getDesk(size) {
+    let currentCells = []
+    for (let i = 0; i < size; i++) {
+        let row = []
+        for (let j = 0; j < size; j++) {
+            row.push(new Cell())
+        }
+
+        this.cells.push(row)
+    }
+    return currentCells
 }
 
 let wrapper = document.querySelector(".wrapper")
